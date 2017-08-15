@@ -1,5 +1,5 @@
 {
-  "name": "gitlabclient",
+  "name": "@creamery/gitlabclient",
   "version": "0.0.1",
   "description": "A simply gitlab client",
   "main": "index.js",
