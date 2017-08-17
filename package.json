@@ -14,6 +14,7 @@
   "author": "creamidea@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@creamery/oauth2client": "^1.0.1",
     "request": "^2.81.0"
   },
   "devDependencies": {
