@@ -29,5 +29,9 @@
     "verbose": true,
     "testEnvironment": "node",
     "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creamidea/GitlabClient"
   }
 }
