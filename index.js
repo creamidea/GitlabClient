@@ -1,6 +1,6 @@
 const { URL } = require('url')
 const request = require('request')
-const Oauth2Client = require('Oauth2Client')
+const Oauth2Client = require('@creamery/oauth2client')
 
 class GitlabClient extends Oauth2Client {
   constructor (params) {
@@ -52,10 +52,11 @@ class GitlabClient extends Oauth2Client {
               uri: self.api(`/groups/${groupId}/members`)
             }, token)
             if (!membersInGroup.find(u => u.id === userId)) {
-              throw new Error({
+              const err = {
                 statusCode: 404,
                 body: '{"message":"404 Project Not Found"}'
-              })
+              }
+              throw err
             }
           } else {
             throw err
@@ -121,7 +122,7 @@ class GitlabClient extends Oauth2Client {
           ctx.session.user = {
             id: user.id
           }
-          ctx.session.access_token = accessToken
+          ctx.session.accessToken = accessToken
           // ctx.session.token_type = tokenType
           // ctx.session.refresh_token = refreshToken
           // ctx.session.scope = scope
@@ -142,7 +143,7 @@ class GitlabClient extends Oauth2Client {
         }
       }
 
-      const token = ctx.session.access_token
+      const token = ctx.session.accessToken
       if (!token) {
         ctx.session.redirect_url = ctx.url
         return self.redirectToAuthorizedURI(ctx)
